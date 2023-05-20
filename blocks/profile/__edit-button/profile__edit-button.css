@@ -1,4 +1,4 @@
-.popup__edit-button {
+.profile__edit-button {
   position: absolute;
   width: 24px;
   height: 24px;
@@ -12,7 +12,7 @@
 }
 
 @media screen and (max-width: 1023px) {
-  .popup__edit-button {
+  .profile__edit-button {
     top: 8px;
     right: 19px;
     width: 18px;
@@ -20,6 +20,6 @@
   }
 }
 
-.popup__edit-button:hover {
+.profile__edit-button:hover {
   opacity: 0.6;
 }

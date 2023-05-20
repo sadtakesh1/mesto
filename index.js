@@ -1,4 +1,4 @@
-const openPopupButtonEl = document.querySelector('#open-popup-button');
+const openPopupButtonEl = document.querySelector('#open-profile-button');
 const closePopupButtonEl = document.querySelector('#close-popup-button');
 
 const editPopupEl = document.querySelector('.popup');
@@ -10,14 +10,13 @@ const editFormEl = document.querySelector('#edit-form');
 
 openPopupButtonEl.addEventListener('click', function () {
   openPopup(editPopupEl);
+  nameInputEl.value = pageTitleEl.textContent;
+  nameAboutEl.value = pageAboutEl.textContent;
 });
 
 closePopupButtonEl.addEventListener('click', function () {
   closePopup(editPopupEl);
 });
-
-nameInputEl.value = pageTitleEl.textContent;
-nameAboutEl.value = pageAboutEl.textContent;
 
 editFormEl.addEventListener('submit', function (event) {
   event.preventDefault();
