@@ -1,0 +1,20 @@
+.popup__group {
+  min-width: 358px;
+  min-height: 27px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 1023px) {
+  .popup__group {
+    min-width: 238px;
+  }
+
+  .popup__group:last-of-type {
+    margin-bottom: 45px;
+  }
+}
+
+.popup__group:last-of-type {
+  margin-bottom: 48px;
+}

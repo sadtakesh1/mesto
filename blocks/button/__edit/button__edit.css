@@ -1,0 +1,25 @@
+.button__edit {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #ffffff;
+  background-color: black;
+  background-image: url(../../../image/ui-kit/edit-button.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  right: 0;
+  top: 15px;
+}
+
+@media screen and (max-width: 1023px) {
+  .button__edit {
+    top: 8px;
+    right: 19px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.button__edit:hover {
+  opacity: 0.6;
+}
