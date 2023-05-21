@@ -1,14 +1,9 @@
 .profile__avatar {
-  width: 120px;
-  height: 120px;
+  max-width: 120px;
+  width: 100%;
+  min-height: 120px;
   background-image: url(../../../image/kusto-profile-photo.jpg);
   border-radius: 50%;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
-}
-
-@media screen and (max-width: 1023px) {
-  .profile__avatar {
-    margin: 0 auto;
-  }
 }

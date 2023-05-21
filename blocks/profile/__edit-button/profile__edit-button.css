@@ -1,22 +1,21 @@
 .profile__edit-button {
-  position: absolute;
-  width: 24px;
-  height: 24px;
+  max-width: 24px;
+  min-height: 24px;
   border: 1px solid #ffffff;
   background-color: black;
-  background-image: url(../../../image/ui-kit/edit-button.png);
+  background-image: url(../../../image/ui-kit/main-edit.svg);
   background-repeat: no-repeat;
   background-position: center;
-  right: 0;
-  top: 15px;
+  cursor: pointer;
+  width: 100%;
+  align-self: end;
 }
 
 @media screen and (max-width: 1023px) {
   .profile__edit-button {
-    top: 8px;
-    right: 19px;
-    width: 18px;
-    height: 18px;
+    background-image: url(../../../image/ui-kit/edit-mobile.svg);
+    min-height: 18px;
+    max-width: 18px;
   }
 }
 

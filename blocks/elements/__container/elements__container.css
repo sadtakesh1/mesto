@@ -1,6 +1,8 @@
 .elements__container {
+  color: black;
   display: flex;
+  min-height: 80px;
+  align-items: center;
   justify-content: space-between;
-  max-width: 246px;
-  margin: 25px auto 0;
+  padding: 0 15px 0 21px;
 }

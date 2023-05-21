@@ -1,3 +1,4 @@
 .elements__reaction-button_active{
     background-image: url(../../../../image/ui-kit/hearth-active.svg);
+    cursor: pointer;
 }
