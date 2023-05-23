@@ -5,9 +5,9 @@
   line-height: 17px;
   color: #000;
   max-width: 358px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   margin-bottom: 30px;
-  padding-bottom: 13px;
+  padding: 0 0 9px;
 }
 
 .popup__input:nth-of-type(2) {

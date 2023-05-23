@@ -17,8 +17,9 @@
   .popup__close-button {
     min-height: 20px;
     min-width: 20px;
-    top: -30px;
+    top: -36px;
     right: 0;
+    background-image: url(../../../image/ui-kit/CloseIconMobile.svg);
   }
 }
 
