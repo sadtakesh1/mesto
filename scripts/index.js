@@ -1,54 +1,52 @@
-const openPopupButtonEl = document.querySelector('.profile__edit-button');
-const closePopupButtonEl = document.querySelector('.popup__close-button');
+const buttonOpenPopupCard = document.querySelector('.profile__edit-button');
+const buttonClosePopupCard = document.querySelector('.popup__close-button');
 
-const editPopupEl = document.querySelector('.popup');
+const editPopupEl = document.querySelector('.popup_edit');
 const pageTitleEl = document.querySelector('.profile__name');
 const pageAboutEl = document.querySelector('.profile__about');
-const nameInputEl = document.querySelector('.popup__input_user_name');
-const nameAboutEl = document.querySelector('.popup__input_user_about');
-const editFormEl = document.querySelector('.popup__form');
+const inputUserName = document.querySelector('.popup__input_user_name');
+const inputUserAbout = document.querySelector('.popup__input_user_about');
+const formEditEl = document.querySelector('.popup__form');
 
 /**addPopup */
-const openPopupAddButtonEl = document.querySelector('.profile__add-button');
-const closePopupAddButtonEl = document.querySelector('.popup__close-button_add');
+const addButtonOpenPopupCard = document.querySelector('.profile__add-button');
+const addButtonClosePopupCard = document.querySelector('.popup__close-button_add');
 
 const addPopupEl = document.querySelector('.popup_add');
-const placeInputEl = document.querySelector('.popup__input_place_name');
-const sourceInputEl = document.querySelector('.popup__input_place_source');
-const placeNameInputEl = document.querySelector('.popup__input_place_name');
-const placeSourceInputEl = document.querySelector('.popup__input_place_source');
-const addFormEl = document.querySelector('.popup__form_add');
+const inputPlaceName = document.querySelector('.popup__input_place_name');
+const inputPlaceSource = document.querySelector('.popup__input_place_source');
+const formAddEl = document.querySelector('.popup__form_add');
 
-openPopupAddButtonEl.addEventListener('click', function () {
+addButtonOpenPopupCard.addEventListener('click', function () {
   openPopup(addPopupEl);
 
 });
 
-closePopupAddButtonEl.addEventListener('click', function () {
+addButtonClosePopupCard.addEventListener('click', function () {
   closePopup(addPopupEl);
 });
 
-addFormEl.addEventListener('submit', createNewCard);
+formAddEl.addEventListener('submit', createNewCard);
 
 function createNewCard (event) {
   event.preventDefault();
-  const placeNameEl = placeNameInputEl.value;
-  const placeSourceEl = placeSourceInputEl.value;
+  const placeNameEl = inputPlaceName.value;
+  const placeSourceEl = inputPlaceSource.value;
   const newElements = createElementsItem(placeNameEl, placeSourceEl);
   elementsContainer.prepend(newElements);
-  addFormEl.reset();
+  formAddEl.reset();
   closePopup(addPopupEl);
 }
 
 
 
-openPopupButtonEl.addEventListener('click', function () {
+buttonOpenPopupCard.addEventListener('click', function () {
   openPopup(editPopupEl);
-  nameInputEl.value = pageTitleEl.textContent;
-  nameAboutEl.value = pageAboutEl.textContent;
+  inputUserName.value = pageTitleEl.textContent;
+  inputUserAbout.value = pageAboutEl.textContent;
 });
 
-closePopupButtonEl.addEventListener('click', function () {
+buttonClosePopupCard.addEventListener('click', function () {
   closePopup(editPopupEl);
 });
 
@@ -60,12 +58,12 @@ function closePopup(popupEl) {
   popupEl.classList.remove('popup_opened');
 }
 
-editFormEl.addEventListener('submit', function (event) {
+formEditEl.addEventListener('submit', function (event) {
   event.preventDefault();
 
-  pageTitleEl.textContent = nameInputEl.value;
+  pageTitleEl.textContent = inputUserName.value;
 
-    pageAboutEl.textContent = nameAboutEl.value;
+    pageAboutEl.textContent = inputUserAbout.value;
 
   closePopup(editPopupEl);
 });
@@ -75,32 +73,6 @@ const elementsTemplateContent = elementsTemplate.content;
 const elementsGroupItems = elementsTemplateContent.querySelector('.elements__group');
 const elementsContainer = document.querySelector('.elements');
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 initialCards.forEach(function (item) {
   const newElementsGroupItems = createElementsItem(item.name, item.link);
@@ -111,16 +83,16 @@ initialCards.forEach(function (item) {
 const popupImage = document.querySelector('.popup_image');
 const popupTitleImage = popupImage.querySelector('.popup__title-image');
 const popupElementsImage = popupImage.querySelector('.popup__elements-item');
-const popupCloseButtonImage = popupImage.querySelector('.popup__close-button_image');
+const buttonClosePopupImage = popupImage.querySelector('.popup__close-button_image');
 
 
 
 function createElementsItem (name, link) {
   const newElementsGroupItems = elementsGroupItems.cloneNode(true);
   
-  const deletePopupButtonEl = newElementsGroupItems.querySelector('.elements__delete-button');
-  deletePopupButtonEl.addEventListener('click', function () {
-    deletePopupButtonEl.closest('.elements__group').remove();
+  const buttonDeletePopupEl = newElementsGroupItems.querySelector('.elements__delete-button');
+  buttonDeletePopupEl.addEventListener('click', function () {
+    buttonDeletePopupEl.closest('.elements__group').remove();
   })
   
   const elementText = newElementsGroupItems.querySelector('.elements__text'); 
@@ -128,6 +100,8 @@ function createElementsItem (name, link) {
   
   const elementSource = newElementsGroupItems.querySelector('.elements__item');
   elementSource.src = link;
+  elementSource.alt = name;
+
 
   const elementReactionEl = newElementsGroupItems.querySelector('.elements__reaction-button');
   
@@ -139,6 +113,7 @@ function createElementsItem (name, link) {
   elementsImageEl.addEventListener('click', function () {
     popupTitleImage.textContent = elementText.textContent;
     popupElementsImage.src = elementSource.src;
+    popupElementsImage.alt = popupTitleImage.textContent;
     openPopup(popupImage);
   })
 
@@ -146,4 +121,4 @@ function createElementsItem (name, link) {
   return newElementsGroupItems;
 };
 
-popupCloseButtonImage.addEventListener('click', () => closePopup(popupImage));
+buttonClosePopupImage.addEventListener('click', () => closePopup(popupImage));
