@@ -1,3 +1,5 @@
+const popupEl = document.querySelectorAll('.popup');
+
 const buttonOpenPopupCard = document.querySelector('.profile__edit-button');
 const buttonClosePopupCard = document.querySelector('.popup__close-button');
 
@@ -120,5 +122,33 @@ function createElementsItem (name, link) {
  
   return newElementsGroupItems;
 };
+
+popupEl.forEach(popup => {
+  popup.addEventListener('mousedown', evt => { 
+    if (evt.target === popup) {
+      closePopup(popup)
+    }
+  });
+});
+
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupByEscape);
+};
+
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupByEscape);
+};
+
+function closePopupByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  };
+};
+
+
+
 
 buttonClosePopupImage.addEventListener('click', () => closePopup(popupImage));
