@@ -9,19 +9,21 @@ const pageAboutEl = document.querySelector('.profile__about');
 const inputUserName = document.querySelector('.popup__input_user_name');
 const inputUserAbout = document.querySelector('.popup__input_user_about');
 const formEditEl = document.querySelector('.popup__form');
+const editFormSubmit = formEditEl.querySelector('.popup__save-button');
 
 /**addPopup */
 const addButtonOpenPopupCard = document.querySelector('.profile__add-button');
 const addButtonClosePopupCard = document.querySelector('.popup__close-button_add');
 
+
 const addPopupEl = document.querySelector('.popup_add');
 const inputPlaceName = document.querySelector('.popup__input_place_name');
 const inputPlaceSource = document.querySelector('.popup__input_place_source');
 const formAddEl = document.querySelector('.popup__form_add');
+const addFormSubmit = addPopupEl.querySelector('.popup__save-button');
 
 addButtonOpenPopupCard.addEventListener('click', function () {
   openPopup(addPopupEl);
-
 });
 
 addButtonClosePopupCard.addEventListener('click', function () {
@@ -36,8 +38,8 @@ function createNewCard (event) {
   const placeSourceEl = inputPlaceSource.value;
   const newElements = createElementsItem(placeNameEl, placeSourceEl);
   elementsContainer.prepend(newElements);
-  formAddEl.reset();
   closePopup(addPopupEl);
+  formAddEl.reset();
 }
 
 
@@ -46,23 +48,18 @@ buttonOpenPopupCard.addEventListener('click', function () {
   openPopup(editPopupEl);
   inputUserName.value = pageTitleEl.textContent;
   inputUserAbout.value = pageAboutEl.textContent;
+  editFormSubmit.classList.remove('popup__save-button_disabled');
+    editFormSubmit.removeAttribute('disabled', 'disabled');
 });
 
 buttonClosePopupCard.addEventListener('click', function () {
   closePopup(editPopupEl);
 });
 
-function openPopup(popupEl) {
-  popupEl.classList.add('popup_opened');
-}
-
-function closePopup(popupEl) {
-  popupEl.classList.remove('popup_opened');
-}
 
 formEditEl.addEventListener('submit', function (event) {
   event.preventDefault();
-
+  
   pageTitleEl.textContent = inputUserName.value;
 
     pageAboutEl.textContent = inputUserAbout.value;
@@ -134,6 +131,8 @@ popupEl.forEach(popup => {
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByEscape);
+  addFormSubmit.classList.add('popup__save-button_disabled');
+  addFormSubmit.setAttribute('disabled', 'disabled');
 };
 
 function closePopup(popup) {
