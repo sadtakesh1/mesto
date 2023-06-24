@@ -1,4 +1,13 @@
 const enableValidation = ({form, formInput, formInputInvalid, formSubmit, formSubmitDisabled, formErrorActive}) => {
+  const formList = Array.from(document.querySelectorAll(`.${form}`));
+  formList.forEach((formElement) => {
+    formElement.addEventListener('submit', evt => {
+      evt.preventDefault();
+    });
+
+    setEventListeners(formElement, formInput, formSubmit, formInputInvalid, formSubmitDisabled, formErrorActive);
+  });
+};
 
 const showInputError = (formElement, inputElement, errorMessage, formInputInvalid, formErrorActive) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -50,14 +59,7 @@ const hideInputError = (formElement, inputElement, formInputInvalid, formErrorAc
     });
   };
 
-  const formList = Array.from(document.querySelectorAll(`.${form}`));
-  formList.forEach((formElement) => {
-    setEventListeners(formElement, formInput, formSubmit, formInputInvalid, formSubmitDisabled, formErrorActive);
-  });
-};
-
-
-
+  
 enableValidation({
     form: 'popup__form',
     formInput: 'popup__input',

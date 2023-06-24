@@ -24,6 +24,8 @@ const addFormSubmit = addPopupEl.querySelector('.popup__save-button');
 
 addButtonOpenPopupCard.addEventListener('click', function () {
   openPopup(addPopupEl);
+  addFormSubmit.classList.add('popup__save-button_disabled');
+  addFormSubmit.setAttribute('disabled', 'disabled');
 });
 
 addButtonClosePopupCard.addEventListener('click', function () {
@@ -38,18 +40,23 @@ function createNewCard (event) {
   const placeSourceEl = inputPlaceSource.value;
   const newElements = createElementsItem(placeNameEl, placeSourceEl);
   elementsContainer.prepend(newElements);
+
   closePopup(addPopupEl);
   formAddEl.reset();
+
+  
+
 }
 
 
 
 buttonOpenPopupCard.addEventListener('click', function () {
-  openPopup(editPopupEl);
   inputUserName.value = pageTitleEl.textContent;
   inputUserAbout.value = pageAboutEl.textContent;
   editFormSubmit.classList.remove('popup__save-button_disabled');
-    editFormSubmit.removeAttribute('disabled', 'disabled');
+  editFormSubmit.removeAttribute('disabled', 'disabled');
+
+  openPopup(editPopupEl);
 });
 
 buttonClosePopupCard.addEventListener('click', function () {
@@ -131,8 +138,7 @@ popupEl.forEach(popup => {
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByEscape);
-  addFormSubmit.classList.add('popup__save-button_disabled');
-  addFormSubmit.setAttribute('disabled', 'disabled');
+  
 };
 
 function closePopup(popup) {
