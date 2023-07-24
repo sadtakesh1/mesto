@@ -1,4 +1,4 @@
-.popup__title-image {
+.popup__title_image {
   position: absolute;
   bottom: -22px;
   color: #fff;
@@ -7,3 +7,4 @@
   font-weight: 400;
   margin: 0;
 }
+

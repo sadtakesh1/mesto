@@ -1,4 +1,4 @@
-.elements {
+.cards {
   display: grid;
   max-width: 880px;
   margin: 50px auto 0;
@@ -7,7 +7,7 @@
 }
 
 @media screen and (max-width: 1023px) {
-  .elements {
+  .cards {
     margin: 36px auto 0;
     grid-template-columns: repeat(1, minmax(282px, 1fr));
     gap: 20px;
