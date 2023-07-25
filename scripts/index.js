@@ -1,6 +1,6 @@
 import Card from './Card.js'
 import { initialCards } from './initialCards.js';
-
+import Validation from './Validation.js';
 
 const popupList = document.querySelectorAll('.popup');
 /*imagePopup*/
@@ -71,7 +71,9 @@ function createNewCard(form) {
   cardsContainer.prepend(newCard);
 
   closePopup(addPopup);
+  addPopupForm.disabledSubmitButton();
   addForm.reset();
+
 };
 
 /*Закрытие попапа нажатием ESC*/
@@ -112,6 +114,7 @@ addForm.addEventListener('submit', createNewCard);
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByEscape);
+  
 };
 
 function closePopup(popup) {
@@ -123,6 +126,7 @@ function openProfilePopup(popup) {
   userName.value = defaultUserName.textContent; 
   userInfo.value = defaultUserInfo.textContent;
 
+  editPopupForm.enableSubmitButton();
   openPopup(popup);
 };
 
@@ -132,3 +136,11 @@ export function openImagePopup(name, link) {
 
   openPopup(imagePopup);
 }
+
+const editPopupForm = new Validation(classesForValidation, editForm);
+
+editPopupForm.enableValidation();
+
+const addPopupForm = new Validation(classesForValidation, addForm);
+
+addPopupForm.enableValidation();
