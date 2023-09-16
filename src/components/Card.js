@@ -1,10 +1,10 @@
-import { openImagePopup } from "./index.js";
-
 export default class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
+    console.log(handleCardClick);
   }
 
   _getTemplate() {
@@ -24,8 +24,10 @@ export default class Card {
       this._handleLikeClick();
     });
 
+    //добавил handleCardClick - как связать, нужно ли менять openImagePopup
     this._newCardImage.addEventListener('click', () => {
-      openImagePopup(this._name, this._link);
+      //openImagePopup(this._name, this._link);
+      this._handleCardClick(this._name, this._link);
     });
   }
 
@@ -55,3 +57,4 @@ export default class Card {
     return this._newCard;
   }
 }
+

@@ -5,16 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
-
     <header class="header">
       <div class="header__logo"></div>
     </header>
 
     <main class="content">
-
       <section class="profile">
         <div class="profile__avatar"></div>
         <div class="profile__info">
@@ -25,7 +22,6 @@
         <button class="profile__add-button" type="button"></button>
       </section>
       <section class="cards"></section>
-
     </main>
 
     <footer class="footer">
@@ -46,7 +42,8 @@
               minlength="2"
               maxlength="40"
               required
-              placeholder="Введите имя">
+              placeholder="Введите имя"
+            />
             <p class="popup__error userName-error"></p>
           </label>
           <label for="aboutUser">
@@ -58,7 +55,8 @@
               minlength="2"
               maxlength="200"
               required
-              placeholder="О себе">
+              placeholder="О себе"
+            />
             <p class="popup__error aboutUser-error"></p>
           </label>
           <button class="popup__save-button" type="submit">Сохранить</button>
@@ -80,7 +78,8 @@
               placeholder="Название"
               required
               minlength="2"
-              maxlength="30">
+              maxlength="30"
+            />
             <p class="popup__error placeName-error"></p>
           </label>
           <label for="placeLink">
@@ -90,7 +89,8 @@
               name="link"
               type="url"
               placeholder="Ссылка на картинку"
-              required>
+              required
+            />
             <p class="popup__error placeLink-error"></p>
           </label>
           <button class="popup__save-button" type="submit">Создать</button>
