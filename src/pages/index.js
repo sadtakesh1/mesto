@@ -1,11 +1,12 @@
 import "../pages/index.css"; // добавьте импорт главного файла стилей
 import Card from "../components/Card.js";
-import { initialCards } from "../components/initialCards.js";
-import Validation from "../components/Validation.js";
+import { items } from "../utils/constants";
+import FormValidator from "../components/FormValidator";
 import Section from "../components/Section";
 import PopupWithForm from "../components/PopupWithForm";
 import UserInfo from "../components/UserInfo";
 import PopupWithImage from "../components/PopupWithImage";
+import { classesForValidation } from "../utils/constants";
 
 const popupList = document.querySelectorAll(".popup");
 /*imagePopup*/
@@ -34,13 +35,7 @@ const placeImage = addPopup.querySelector(".popup__input_place_image");
 /*Контейнер для карточек*/
 //const cardsContainer = document.querySelector(".cards");
 /*Обьект с классами для валидации*/
-const classesForValidation = {
-  formInput: "popup__input",
-  formInputInvalid: "popup__input_invalid",
-  formSubmit: "popup__save-button",
-  formSubmitDisabled: "popup__save-button_disabled",
-  formErrorActive: "popup__error_active",
-};
+
 
 /*Загрузка data с уже добавленными местами*/
 
@@ -54,7 +49,7 @@ const cardsContainer = new Section(
   ".cards"
 );
 
-cardsContainer.renderItems(initialCards);
+cardsContainer.renderItems(items);
 
 /*Генерирует новую карточку*/
 function createCard(data, templateSelector, openImagePopup) {
@@ -117,13 +112,12 @@ function createNewCard(inputValues) {
   popupAddCard.close();
 
   addPopupForm.disabledSubmitButton();
-  addForm.reset();
 }
 
-const editPopupForm = new Validation(classesForValidation, editForm);
+const editPopupForm = new FormValidator(classesForValidation, editForm);
 
 editPopupForm.enableValidation();
 
-const addPopupForm = new Validation(classesForValidation, addForm);
+const addPopupForm = new FormValidator(classesForValidation, addForm);
 
 addPopupForm.enableValidation();
