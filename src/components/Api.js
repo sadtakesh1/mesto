@@ -4,7 +4,7 @@ export default class Api {
         this._headers = headers;
     }
 
-    _getRequest(response) {
+    _checkResponse(response) {
         if (!response.ok) {
             return Promise.reject(`Ошибка: ${response.status}`);
         }
@@ -16,7 +16,7 @@ export default class Api {
             method: 'GET',
             headers: this._headers
         })
-            .then(this._getRequest);
+            .then(this._checkResponse);
     }
 
     getUserInfo() {
@@ -24,7 +24,7 @@ export default class Api {
             method: 'GET',
             headers: this._headers
         })
-            .then(this._getRequest);
+            .then(this._checkResponse);
     }
 
     editUserProfile({ userName, aboutUser }) {
@@ -36,7 +36,7 @@ export default class Api {
                 about: `${aboutUser}`
             })
         })
-            .then(this._getRequest);
+            .then(this._checkResponse);
     }
 
     addNewCard({ name, link }) {
@@ -48,7 +48,7 @@ export default class Api {
                 link: `${link}`
             })
         })
-            .then(this._getRequest);
+            .then(this._checkResponse);
     }
 
     deleteCard(cardId) {
@@ -56,7 +56,7 @@ export default class Api {
             method: "DELETE",
             headers: this._headers,
         })
-            .then(this._getRequest);
+            .then(this._checkResponse);
     }
 
 
@@ -65,7 +65,7 @@ export default class Api {
             method: "PUT",
             headers: this._headers,
         })
-            .then(this._getRequest);
+            .then(this._checkResponse);
     }
 
     removeLike(cardId) {
@@ -73,7 +73,7 @@ export default class Api {
             method: "DELETE",
             headers: this._headers,
         })
-            .then(this._getRequest);
+            .then(this._checkResponse);
     }
 
     changeAvatar(link) {
@@ -84,7 +84,7 @@ export default class Api {
                 avatar: `${link}`,
             }),
         })
-            .then(this._getRequest);
+            .then(this._checkResponse);
     }
 
 

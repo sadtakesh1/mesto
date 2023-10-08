@@ -39,7 +39,7 @@ export default class FormValidator {
 
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
-      this.disabledSubmitButton();
+      this.disableSubmitButton();
     }
     else {
       this.enableSubmitButton();
@@ -69,7 +69,7 @@ export default class FormValidator {
     this._submitButton.removeAttribute('disabled');
   }
 
-  disabledSubmitButton() {
+  disableSubmitButton() {
     this._submitButton.classList.add(this._submitButtonDisabledSel);
     this._submitButton.setAttribute('disabled', true);
   }

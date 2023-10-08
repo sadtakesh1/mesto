@@ -8,7 +8,7 @@ const addPopup = document.querySelector(".popup_type_add-card");
 const addButton = document.querySelector(".profile__add-button");
 const addForm = addPopup.querySelector(".popup__form");
 const buttonSubmitPopupCard = addForm.querySelector(".popup__save-button");
-const openEditAvatar = document.querySelector('.profile__avatar-overlay');
+const buttonOpenEditAvatarPopup = document.querySelector('.profile__avatar-overlay');
 const popupEditFormAvatar = document.querySelector('.popup__form_edit-avatar');
 const buttonSubmitPopupAvatar = popupEditFormAvatar.querySelector('.popup__save-button');
 
@@ -31,7 +31,7 @@ export {
   addButton,
   addForm,
   buttonSubmitPopupCard,
-  openEditAvatar,
+  buttonOpenEditAvatarPopup,
   popupEditFormAvatar,
   buttonSubmitPopupAvatar
 };

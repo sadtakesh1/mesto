@@ -7,7 +7,7 @@ export default class PopupDeleteCard extends Popup {
         this._deleteCard = deleteCard;
     }
 
-    sendCard(card) {
+    setCard(card) {
         this._card = card;
     }
 

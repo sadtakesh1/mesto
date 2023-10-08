@@ -25,7 +25,7 @@ export default class Card {
     this._checkCardOwner();
     
     this._newCardLike.addEventListener('click', () => {
-      this._handleLikeClick(this.id, this._didUserPutLike());
+      this._handleLikeClick(this);
     });
 
     this._newCardImage.addEventListener('click', () => {
@@ -36,10 +36,14 @@ export default class Card {
   changeLikesArray(likes) {
     this._likesCounter.textContent = likes.length;
     this._likes = likes;
-    this._didUserPutLike() ? this._newCardLike.classList.add('card__like-button_active') : this._newCardLike.classList.remove('card__like-button_active');
+    this.didUserPutLike() ? this._newCardLike.classList.add('card__like-button_active') : this._newCardLike.classList.remove('card__like-button_active');
   }
 
-  _didUserPutLike() {
+  getId() {
+    return this.id;
+  }
+
+  didUserPutLike() {
     return this._likes.some(user => {
       return user._id === this._userId;
     })
@@ -72,7 +76,7 @@ export default class Card {
 
     this._setEventListeners();
 
-    this._didUserPutLike() ? this._newCardLike.classList.add('card__like-button_active') : this._newCardLike.classList.remove('card__like-button_active');
+    this.didUserPutLike() ? this._newCardLike.classList.add('card__like-button_active') : this._newCardLike.classList.remove('card__like-button_active');
 
     this._newCardImage.src = this._link;
     this._newCardImage.alt = this._name;

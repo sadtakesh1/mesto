@@ -12,12 +12,12 @@ export default class Section {
     });
   }
 
-  addItem(element) {
+  appendItem(element) {
     /**Принимает DOM-элемент и добавляет его в контейнер. */
     this._container.append(element);
   }
 
-  addNewItem(element) {
+  prependItem(element) {
     this._container.prepend(element);
   }
 }

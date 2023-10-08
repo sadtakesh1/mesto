@@ -9,7 +9,7 @@ import {
   addButton,
   addForm,
   buttonSubmitPopupCard,
-  openEditAvatar,
+  buttonOpenEditAvatarPopup,
   popupEditFormAvatar,
   buttonSubmitPopupAvatar
 } from "../utils/constants.js"
@@ -42,7 +42,7 @@ const cardsContainer = new Section(
   {
     renderer: (item) => {
       const card = createCard(userId, item, ".card-template", openImagePopup, handleDeleteCard, handleLikeClick);
-      cardsContainer.addItem(card);
+      cardsContainer.appendItem(card);
     },
   },
   ".cards"
@@ -72,9 +72,10 @@ function editAvatar({ link }) {
   api
     .changeAvatar(link)
     .then((userData) => {
-      console.log(userData);
       userInfo.setUserInfo(userData);
       popupEditAvatar.close();
+      editAvatarPopupForm.disableSubmitButton();
+      
     })
     .catch((err) => {
       console.error(err);
@@ -84,7 +85,7 @@ function editAvatar({ link }) {
     });
 }
 
-openEditAvatar.addEventListener('click', () => {
+buttonOpenEditAvatarPopup.addEventListener('click', () => {
   popupEditAvatar.open();
 });
 
@@ -95,35 +96,33 @@ const popupDeleteCard = new PopupDeleteCard(
 );
 popupDeleteCard.setEventListeners();
 
-function handleLikeClick(cardId, didUserPutLike) {
-  if (didUserPutLike) {
+function handleLikeClick(card) {
+  console.log(card.getId());
+  if (card.didUserPutLike()) {
     api
-      .removeLike(cardId)
+      .removeLike(card.getId())
       .then((res) => {
-        this.changeLikesArray(res.likes);
+        card.changeLikesArray(res.likes);
       })
       .catch((err) => {
         console.error(err);
       });
   } else {
-    api
-      .putLike(cardId)
-      .then((res) => {
-        this.changeLikesArray(res.likes);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+     api
+     .putLike(card.getId())
+     .then((res) => {
+      card.changeLikesArray(res.likes);
+     })
+     .catch((err) => {
+      console.error(err);
+    });
   }
 }
-
-
-
 
 function handleDeleteCard(card) {
   popupDeleteCard.open();
 
-  popupDeleteCard.sendCard(card);
+  popupDeleteCard.setCard(card);
 }
 
 function deleteCard(card) {
@@ -168,8 +167,8 @@ editButton.addEventListener("click", openProfilePopup);
 function openProfilePopup() {
   const userData = userInfo.getUserInfo();
 
-  userName.value = userData.userName;
-  userAbout.value = userData.aboutUser;
+  userName.value = userData.userNameSelector;
+  userAbout.value = userData.aboutUserSelector;
 
   editPopupForm.enableSubmitButton();
   popupProfileEdit.open();
@@ -198,7 +197,7 @@ popupAddCard.setEventListeners();
 addButton.addEventListener("click", openCardPopup);
 
 function openCardPopup() {
-  addPopupForm.disabledSubmitButton();
+  addPopupForm.disableSubmitButton();
   popupAddCard.open();
 }
 
@@ -209,9 +208,9 @@ function createNewCard(inputValues) {
   buttonSubmitPopupCard.textContent = "Создание...";
   api.addNewCard(inputValues).then((res) => {
     const newCard = createCard(userId, res, ".card-template", openImagePopup, handleDeleteCard, handleLikeClick);
-    cardsContainer.addNewItem(newCard);
+    cardsContainer.prependItem(newCard);
     popupAddCard.close();
-    addPopupForm.disabledSubmitButton();
+    addPopupForm.disableSubmitButton();
   })
     .catch((err) => {
       console.error(err);
