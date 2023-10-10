@@ -167,8 +167,8 @@ editButton.addEventListener("click", openProfilePopup);
 function openProfilePopup() {
   const userData = userInfo.getUserInfo();
 
-  userName.value = userData.userNameSelector;
-  userAbout.value = userData.aboutUserSelector;
+  userName.value = userData.userName;
+  userAbout.value = userData.aboutUser;
 
   editPopupForm.enableSubmitButton();
   popupProfileEdit.open();
